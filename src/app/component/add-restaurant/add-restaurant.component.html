@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Restaurant</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <!-- <link rel="stylesheet" href="login.css">  -->
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header text-center bg-primary text-white">
+                <h2>Add Restaurant</h2>
+            </div>
+            <div class="card-body">
+                <form (submit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="restaurantName">Restaurant Name</label>
+                        <input type="text" class="form-control" id="restaurantName" [(ngModel)]="restaurantName" name="restaurantName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="restaurantLocation">Location</label>
+                        <input type="text" class="form-control" id="restaurantLocation" [(ngModel)]="restaurantLocation" name="restaurantLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="restaurantMenu">Menu</label>
+                        <input type="text" class="form-control" id="restaurantMenu" [(ngModel)]="restaurantMenu" name="restaurantMenu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="menuDescription">Menu Description</label>
+                        <textarea class="form-control" id="menuDescription" [(ngModel)]="menuDescription" name="menuDescription" required rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

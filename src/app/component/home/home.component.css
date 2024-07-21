@@ -1,0 +1,147 @@
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1350px;
+   /* Adjust as needed */
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .slide img {
+    width: 100%;
+    display: block;
+    height: 500px;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .popular-dishes {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .dishes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dish {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .dish img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.center-content {
+  height: 50vh;
+  background: url('/assets/image1.jpg') ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.brand-title {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.center-content h5 {
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.short-search-bar {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+.short-search-bar .form-control {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+}
+
+.short-search-bar .input-group-text {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.short-search-bar .input-group-text i {
+  color: #333;
+  font-size: 1.2em;
+}
+
+
+@media (max-width: 768px) {
+  .brand-title {
+    font-size: 2em;
+  }
+
+  .center-content h5 {
+    font-size: 1.2em;
+  }
+
+  .short-search-bar {
+    width: 90%;
+  }
+}
+
+
+  

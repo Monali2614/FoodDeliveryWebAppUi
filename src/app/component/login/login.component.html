@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Order My Food</title>
+   
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="admin-login">
+                <a href="D:\FoodDeliveryWebApp\FoodDeliveryWebApp\src\app\component\admin\admin.component.html">Admin Login</a>
+            </div>
+            <h2>Login</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                    <span id="toggle-password" class="toggle-password">
+                        <img src="assets/eyeopen.jpeg" alt="Show password">
+                    </span>
+                </div>
+                <button type="submit">Login</button>
+                <p class="signup-link">Don't have an account? <a href="D:\FoodDeliveryWebApp\FoodDeliveryWebApp\src\app\component\userregister\userregister.component.html">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggle-password').querySelector('img');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.src = 'assets/eyeclose.jpeg'; // Change to "eye-slash" icon
+                toggleIcon.alt = 'Hide password';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.src = 'assets/eyeopen.jpeg'; // Change to "eye" icon
+                toggleIcon.alt = 'Show password';
+            }
+        }
+
+        document.getElementById('toggle-password').addEventListener('click', togglePassword);
+    </script>
+</body>
+</html>

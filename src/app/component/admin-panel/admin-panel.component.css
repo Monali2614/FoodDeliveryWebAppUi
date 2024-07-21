@@ -1,0 +1,87 @@
+/* admin-panel.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #007bff;
+    color: white;
+    padding-top: 20px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #0069d9;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#sidebar ul.components {
+    padding: 0;
+    list-style: none;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 15px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #007bff;
+    background: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+#content {
+    width: calc(100% - 250px);
+    padding: 20px;
+    margin-left: 250px;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+#content h1 {
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        margin-left: 0;
+    }
+    #content.active {
+        margin-left: 250px;
+    }
+}
+
+#sidebarCollapse {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #sidebarCollapse {
+        display: block;
+    }
+}

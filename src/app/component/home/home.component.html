@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="center-content">
+  
+  <h3 class="brand-title">Food Brand</h3>
+  <h5>Discover The Food and Drink</h5>
+ 
+  <div class="input-group rounded short-search-bar">
+    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+</div>
+
+
+
+
+<div class="slider">
+    <div class="slides" [style.transform]="'translateX(' + (-activeSlideIndex * 100) + '%)'">
+      <div class="slide" *ngFor="let image of images">
+        <img [src]="image" alt="Image">
+      </div>
+    </div>
+    <button class="prev" (click)="prevSlide()">&#10094;</button>
+    <button class="next" (click)="nextSlide()">&#10095;</button>
+  </div>
+  
+
+
+  
+  <div class="popular-dishes">
+    <h2>Popular Dishes</h2>
+    <div class="dishes">
+      <div class="dish" *ngFor="let dish of popularDishes">
+        <img [src]="dish.image" alt="{{ dish.name }}">
+        <p>{{ dish.name }}</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <app-footer></app-footer>
+  

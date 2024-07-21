@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="login.css"> -->
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="bg-primary text-white">
+            <div class="sidebar-header">
+                <h3>Admin Panel</h3>
+                <button type="button" id="sidebarCollapse" class="btn btn-light d-md-none">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#" (click)="setActiveComponent('add-restaurant')">
+                        <i class="fas fa-utensils"></i> Add Restaurant
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    
+        <!-- Page Content -->
+        <div id="content" class="p-4 p-md-5">
+            <ng-container *ngIf="activeComponent === 'add-restaurant'">
+                <app-add-restaurant></app-add-restaurant>
+            </ng-container>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarCollapse').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
