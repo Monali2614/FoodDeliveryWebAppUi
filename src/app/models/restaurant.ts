@@ -1,6 +1,11 @@
-export interface Restaurant {
-    restaurant_id: number;
-    name: string;
-    location: string;
-    rating: number;  // Added rating field
-  }
+export class Restaurant {
+    constructor(
+        public restaurantName: string,
+        public restaurantAddress: string,
+        public cuisines: string[],
+        public rating: number
+        
+      ) {}
+
+}
+

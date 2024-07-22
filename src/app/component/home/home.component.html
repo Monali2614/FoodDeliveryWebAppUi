@@ -13,9 +13,6 @@
   </div>
 </div>
 
-
-
-
 <div class="slider">
     <div class="slides" [style.transform]="'translateX(' + (-activeSlideIndex * 100) + '%)'">
       <div class="slide" *ngFor="let image of images">
@@ -26,19 +23,17 @@
     <button class="next" (click)="nextSlide()">&#10095;</button>
   </div>
   
-
-
   
-  <div class="popular-dishes">
-    <h2>Popular Dishes</h2>
-    <div class="dishes">
-      <div class="dish" *ngFor="let dish of popularDishes">
-        <img [src]="dish.image" alt="{{ dish.name }}">
-        <p>{{ dish.name }}</p>
+  <div class="container">
+    <h2>Popular Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item" *ngFor="let menu of menus">
+        <h3>{{ menu.itemName }}</h3>
+        <p>{{ menu.description }}</p>
       </div>
     </div>
   </div>
   
   
-  <app-footer></app-footer>
+ <app-footer></app-footer>
   

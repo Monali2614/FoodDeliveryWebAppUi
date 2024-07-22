@@ -1,8 +1,24 @@
-export interface Menu {
-    menu_id: number;
-    description: string;
-    item_name: string;
-    price: number;
-    restaurant_id: number;
-    rating: number;  // Added rating field
+export class Menu {
+  id: number;
+  itemName: string;
+  description: string;
+  price: number;
+  restaurant: {
+    id: number;
+    name: string; 
+  };
+
+  constructor(
+    id: number = 0,
+    itemName: string = '',
+    description: string = '',
+    price: number = 0,
+    restaurant: { id: number; name: string } = { id: 0, name: '' }
+  ) {
+    this.id = id;
+    this.itemName = itemName;
+    this.description = description;
+    this.price = price;
+    this.restaurant = restaurant;
   }
+}

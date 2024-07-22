@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Restaurant } from 'src/app/models/restaurant';
+import { RestaurantService } from 'src/app/service/restaurant.service';
+
 
 @Component({
   selector: 'app-add-restaurant',
@@ -6,18 +9,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-restaurant.component.css']
 })
 export class AddRestaurantComponent {
-  restaurantName: string = ''; // Initialize the property
-  restaurantLocation: string = ''; // Initialize the property
-  restaurantMenu: string = ''; // Initialize the property
-  menuDescription: string = ''; // Initialize the property
+  restaurant: Restaurant = new Restaurant('', '', [], 0);
+
+
+  constructor(private restaurantService: RestaurantService) { }
 
   onSubmit() {
-    // Handle the form submission logic here
-    console.log('Form submitted with the following values:');
-    console.log('Restaurant Name:', this.restaurantName);
-    console.log('Restaurant Location:', this.restaurantLocation);
-    console.log('Restaurant Menu:', this.restaurantMenu);
-    console.log('Menu Description:', this.menuDescription);
-    
+    this.restaurantService.addRestaurant(this.restaurant).subscribe(
+      response => {
+        console.log('Restaurant saved successfully', response);
+
+      },
+      error => {
+        console.error('Error saving restaurant', error);
+
+      }
+    );
   }
+
+  splitCuisines(event: string): void {
+    this.restaurant.cuisines = event.split(',').map(cuisine => cuisine.trim());
+  }
+
+
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Restaurant</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     <!-- <link rel="stylesheet" href="login.css">  -->
 </head>
 <body>
     <div class="container mt-5">
@@ -14,23 +13,23 @@
                 <h2>Add Restaurant</h2>
             </div>
             <div class="card-body">
-                <form (submit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="restaurantName">Restaurant Name</label>
-                        <input type="text" class="form-control" id="restaurantName" [(ngModel)]="restaurantName" name="restaurantName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="restaurantLocation">Location</label>
-                        <input type="text" class="form-control" id="restaurantLocation" [(ngModel)]="restaurantLocation" name="restaurantLocation" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="restaurantMenu">Menu</label>
-                        <input type="text" class="form-control" id="restaurantMenu" [(ngModel)]="restaurantMenu" name="restaurantMenu" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="menuDescription">Menu Description</label>
-                        <textarea class="form-control" id="menuDescription" [(ngModel)]="menuDescription" name="menuDescription" required rows="3"></textarea>
-                    </div>
+                <form (ngSubmit)="onSubmit()" #form="ngForm">
+                    <div>
+                        <label for="restaurantName">Name:</label>
+                        <input type="text" id="restaurantName" [(ngModel)]="restaurant.restaurantName" name="restaurantName" required>
+                      </div>
+                      <div>
+                        <label for="restaurantAddress">Address:</label>
+                        <input type="text" id="restaurantAddress" [(ngModel)]="restaurant.restaurantAddress" name="restaurantAddress" required>
+                      </div>
+                      <div>
+                        <label for="cuisines">Cuisines (comma separated):</label>
+                        <input type="text" id="cuisines" [(ngModel)]="restaurant.cuisines" name="cuisines" (ngModelChange)="splitCuisines($event)" required>
+                      </div>
+                      <div>
+                        <label for="rating">Rating:</label>
+                        <input type="number" id="rating" [(ngModel)]="restaurant.rating" name="rating" required>
+                      </div>
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
             </div>
