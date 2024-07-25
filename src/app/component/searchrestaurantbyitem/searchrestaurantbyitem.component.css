@@ -4,8 +4,8 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    /* background-color: #cd1a1a; */
+  
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -22,7 +22,7 @@
   }
   
   .input-container input {
-    width: 70%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -59,8 +59,11 @@
   
   .results-container li {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    color: #faf8f8; /* Darker color */
+    font-weight: bold; /* Make text bold */
+    /* border-bottom: 1px solid #e01212; */
   }
+  
   
   .no-results {
     margin-top: 20px;

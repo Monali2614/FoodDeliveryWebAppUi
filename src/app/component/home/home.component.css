@@ -5,6 +5,8 @@
    /* Adjust as needed */
     margin: auto;
     overflow: hidden;
+    border: right;
+    margin-top: 3px;
   }
   
   .slides {
@@ -79,7 +81,7 @@ body, html {
 
 .center-content {
   height: 50vh;
-  background: url('/assets/image1.jpg') ;
+  background: url('/assets/header.png') ;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,35 +100,59 @@ body, html {
   margin-bottom: 1.5em;
 }
 
+/* Styles for the search bar */
 .short-search-bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
   display: flex;
   align-items: center;
-  width: 80%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the search bar */
+.short-search-bar {
+  width: 100%;
   max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .short-search-bar .form-control {
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  border: 1px solid #ced4da;
-  padding: 10px;
+  flex-grow: 1;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0;
+  outline: none;
+  font-size: 16px;
+}
+
+.short-search-bar .form-control:focus {
+  box-shadow: none;
 }
 
 .short-search-bar .input-group-text {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  border-left: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: transparent; /* Remove the background */
 }
 
-.short-search-bar .input-group-text i {
+.short-search-bar .input-group-text .fas {
   color: #333;
-  font-size: 1.2em;
+  font-size: 18px;
 }
+
+.short-search-bar .input-group-text:hover .fas {
+  color: #007bff;
+}
+
 
 
 @media (max-width: 768px) {

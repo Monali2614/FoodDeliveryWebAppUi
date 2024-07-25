@@ -9,3 +9,11 @@ export class Restaurant {
 
 }
 
+//  export interface restaurant {
+//   restaurantId: number;
+//   restaurantName: string;
+//   restaurantAddress: string;
+//   rating: number;
+//   cuisines: string[];
+// }
+

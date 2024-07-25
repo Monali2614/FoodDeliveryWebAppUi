@@ -17,10 +17,16 @@ export class MenuService {
 
 
   searchMenuItem(itemName: string): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(`${NAV_URL}api/menus/menu/by-menu/${itemName}`);
+    return this.http.get<Restaurant[]>(`${NAV_URL}/api/menus/menu/by-menu/${itemName}`);
   }
 
+  
   getAllMenus(): Observable<Menu[]> {
-    return this.http.get<Menu[]>(`${NAV_URL}api/menus/menu/getAllMenus`);
+    return this.http.get<Menu[]>(`${NAV_URL}/api/menus/menu/getAllMenus`);
+  }
+
+
+  getRestaurantsByMenu(itemName: string): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${NAV_URL}/api/menus/menu/by-menu/${itemName}`);
   }
 }

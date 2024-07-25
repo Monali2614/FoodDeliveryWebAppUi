@@ -1,0 +1,16 @@
+<div class="restaurant-list-container">
+  <h2>Restaurants Offering This Menu</h2>
+  <div *ngIf="restaurants && restaurants.length > 0; else noRestaurants">
+    <ul>
+      <li *ngFor="let restaurant of restaurants">
+        <h3>{{ restaurant.restaurantName }}</h3>
+        <p>{{ restaurant.restaurantAddress }}</p>
+        <p>Rating: {{ restaurant.rating }}</p>
+        <p>Cuisines: {{ restaurant.cuisines.join(', ') }}</p>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noRestaurants>
+    <p>No restaurants available.</p>
+  </ng-template>
+</div>

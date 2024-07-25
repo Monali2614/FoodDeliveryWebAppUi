@@ -1,16 +1,17 @@
 <app-header></app-header>
 
 <div class="center-content">
-  
   <h3 class="brand-title">Food Brand</h3>
   <h5>Discover The Food and Drink</h5>
- 
-  <div class="input-group rounded short-search-bar">
+
+   <app-searchrestaurantbyitem></app-searchrestaurantbyitem>
+
+  <!-- <div class="input-group rounded short-search-bar">
     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
     <span class="input-group-text border-0" id="search-addon">
       <i class="fas fa-search"></i>
     </span>
-  </div>
+  </div> -->
 </div>
 
 <div class="slider">
@@ -27,12 +28,13 @@
   <div class="container">
     <h2>Popular Menu</h2>
     <div class="menu-grid">
-      <div class="menu-item" *ngFor="let menu of menus">
+      <div class="menu-item" *ngFor="let menu of menus" (click)="onMenuClick(menu)">
         <h3>{{ menu.itemName }}</h3>
         <p>{{ menu.description }}</p>
       </div>
     </div>
   </div>
+  
   
   
  <app-footer></app-footer>

@@ -1,17 +1,31 @@
+body {
+  background-image: url('src\assets\admin1.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }
+
 .h-custom {
-height: calc(100% - 73px);
+  height: calc(100% - 73px);
 }
+
 @media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
+  .h-custom {
+    height: 100%;
+  }
 }
 
 .baskervville-sc-regular {
@@ -19,13 +33,44 @@ height: 100%;
   font-weight: 400;
   font-style: normal;
 }
-.admin-img {
-  width: 100%;
-  height: auto;
-}
+
 .large-input {
   font-size: 1.5rem; /* Increase font size */
   padding: 0.75rem;  /* Increase padding */
   width: 100%;      /* Make input full width */
   box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+.btn-lg {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-outline {
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  color: white; /* Ensure the text is visible against the background */
+}
+
+.text-black {
+  color: white !important; /* Override the text color to ensure readability */
+}
+
+form {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the form */
+  padding: 2rem;
+  border-radius: 10px;
 }

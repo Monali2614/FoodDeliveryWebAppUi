@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { AdminComponent } from './component/admin/admin.component';
-import { LoginComponent } from './component/login/login.component';
 import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
 import { AddRestaurantComponent } from './component/add-restaurant/add-restaurant.component';
 import { HomeComponent } from './component/home/home.component';
@@ -15,10 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './service/user.service';
 import { MenuService } from './service/menu.service';
 import { PaymentComponent } from './component/payment/payment.component';
-import { UserregisterComponent } from './component/userregister/userregister.component';
 import { RouterModule } from '@angular/router'; // Import RouterModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchrestaurantbyitemComponent } from './component/searchrestaurantbyitem/searchrestaurantbyitem.component';
+import { RestaurantListComponent } from './component/restaurant-list/restaurant-list.component';
+import { LoginComponent } from './component/login/login.component';
+import { UserregisterComponent } from './component/userregister/userregister.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,15 @@ import { SearchrestaurantbyitemComponent } from './component/searchrestaurantbyi
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    LoginComponent,
     AdminPanelComponent,
     AddRestaurantComponent,
     HomeComponent,
     PaymentComponent,
+    SearchrestaurantbyitemComponent,
+    RestaurantListComponent,
     UserregisterComponent,
-    SearchrestaurantbyitemComponent
+    LoginComponent,
+    
 
   ],
   

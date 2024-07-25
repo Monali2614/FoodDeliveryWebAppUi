@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TransactionService } from 'src/app/service/transaction.service';
 
-
 declare var Razorpay: any;
 
 @Component({
@@ -30,16 +29,34 @@ export class PaymentComponent {
       amount: transactionDetails.amount,
       currency: transactionDetails.currency,
       order_id: transactionDetails.orderId,
+      name: 'Zomato',
+      description: 'Payment of online shopping',
       handler: (response: any) => {
-        alert(`Payment successful. Razorpay payment ID: ${response.razorpay_payment_id}`);
+        // alert(`Payment successful. Razorpay payment ID: ${response.razorpay_payment_id}`);
+        alert("Payment Succesfully")
+        // alert(`Payment successful. Razorpay Order ID: ${response.razorpay_order_id}`);
+        // alert(`Payment successful. Razorpay Signature: ${response.razorpay_signature}`);
+        console.log("Payment successful");
       },
       prefill: {
-        name: "Your Name",
-        email: "your.email@example.com",
-        contact: "9999999999"
+        name: "Monali Gawargur",
+        email: "monalig1426@gmail.com",
+        contact: "9970567579"
       },
       theme: {
         color: "#3399cc"
+      },
+      method: {
+        netbanking: true,
+        card: true,
+        upi: true,
+        wallet: true,
+        paylater: true
+      },
+      modal: {
+        ondismiss: function() {
+          alert("Payment popup closed");
+        }
       }
     };
 

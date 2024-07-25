@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Order My Food</title>
+    <link rel="stylesheet" href="login.component.css">
 </head>
+
 <body>
     <div class="container">
         <div class="login-box">
             <div class="admin-login">
-                <a href="D:\FoodDeliveryWebApp\FoodDeliveryWebApp\src\app\component\admin\admin.component.html">Admin Login</a>
+                <p class="admin-login-link">
+                    <a routerLink="/admin">Admin Login</a>
+                </p>
             </div>
+
             <h2>Login</h2>
-            <form>
+            <form (ngSubmit)="onLogin()">
                 <div class="input-group">
-                    <input type="text" id="username" name="username" required>
-                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" [(ngModel)]="username" required placeholder="Username">
+                   
                 </div>
                 <div class="input-group">
-                    <input type="password" id="password" name="password" required>
-                    <label for="password">Password</label>
-                    <span id="toggle-password" class="toggle-password">
-                        <img src="assets/eyeopen.jpeg" alt="Show password">
+                    <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
+                   
+                    <span id="toggle-password" class="toggle-password" (click)="togglePassword()">
+                        <img [src]="passwordVisible ? 'assets/eyeclose.jpeg' : 'assets/eyeopen.jpeg'" alt="Toggle password visibility">
                     </span>
                 </div>
-                <button type="submit" (click)="onLogin()">Login</button>
-                <p class="signup-link">Don't have an account? <a href="D:\FoodDeliveryWebApp\FoodDeliveryWebApp\src\app\component\userregister\userregister.component.html">Sign up</a></p>
+                <button type="submit">Login</button>
+                <p class="signup-link">Don't have an account? <a routerLink="/userregister">Sign up</a></p>
+                <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
             </form>
         </div>
     </div>
-    <script>
-        function togglePassword() {
-            const passwordField = document.getElementById('password');
-            const toggleIcon = document.getElementById('toggle-password').querySelector('img');
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggleIcon.src = 'assets/eyeclose.jpeg'; // Change to "eye-slash" icon
-                toggleIcon.alt = 'Hide password';
-            } else {
-                passwordField.type = 'password';
-                toggleIcon.src = 'assets/eyeopen.jpeg'; // Change to "eye" icon
-                toggleIcon.alt = 'Show password';
-            }
-        }
-
-        document.getElementById('toggle-password').addEventListener('click', togglePassword);
-    </script>
 </body>
+
 </html>
