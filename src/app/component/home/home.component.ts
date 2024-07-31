@@ -4,6 +4,7 @@ import { Menu } from 'src/app/models/menu';
 import { MenuService } from 'src/app/service/menu.service';
 import { SharedDataService } from 'src/app/service/shared-data.service';
 import { interval, Subscription } from 'rxjs';
+import { WishlistService } from 'src/app/service/wishlist.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private menuService: MenuService,
     private router: Router,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private  wishlistService : WishlistService
   ) { }
 
   ngOnInit(): void {
@@ -81,17 +83,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
-  // toggleWishlist(menu: Menu): void {
-  //   if (this.isInWishlist(menu)) {
-  //     this.wishlistService.removeFromWishlist(menu);
-  //   } else {
-  //     this.wishlistService.addToWishlist(menu);
-  //   }
-  // }
+  toggleWishlist(menu: Menu): void {
+    if (this.isInWishlist(menu)) {
+      this.wishlistService.removeFromWishlist(menu);
+    } else {
+      this.wishlistService.addToWishlist(menu);
+    }
+  }
 
-
-  // isInWishlist(menu: Menu): boolean {
-  //   return this.wishlistService.getWishlist().includes(menu);
-  // }
+  isInWishlist(menu: Menu): boolean {
+    return this.wishlistService.getWishlist().includes(menu);
+  }
 }
 

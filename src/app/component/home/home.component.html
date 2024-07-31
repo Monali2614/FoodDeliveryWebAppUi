@@ -18,12 +18,17 @@
     <button class="next" (click)="nextSlide()">&#10095;</button>
   </div>
   
+  
   <div class="container">
     <h2>Popular Menu</h2>
     <div class="menu-grid">
-      <div class="menu-item" *ngFor="let menu of menus" (click)="onMenuClick(menu)">
+      <div class="menu-item" *ngFor="let menu of menus" (click)="onMenuClick(menu)" >
+        <i class="heart-icon" 
+           [ngClass]="{'in-wishlist': isInWishlist(menu)}" 
+           (click)="toggleWishlist(menu); $event.stopPropagation()">&#9829;</i>
         <h3>{{ menu.itemName }}</h3>
         <p>{{ menu.description }}</p>
+        <p>{{ menu.price | currency:'INR' }}</p>
       </div>
     </div>
   </div>
