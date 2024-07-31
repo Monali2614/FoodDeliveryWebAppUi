@@ -1,0 +1,87 @@
+/* edit-profile.component.css */
+
+/* Container for the entire form and user list */
+.edit-profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title of the form */
+  .edit-profile-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  /* Styling for each form group */
+  .edit-profile-container form div {
+    margin-bottom: 15px;
+  }
+  
+  /* Label styling */
+  .edit-profile-container form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+    font-weight: bold;
+  }
+  
+  /* Input field styling */
+  .edit-profile-container form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #495057;
+    font-size: 16px;
+  }
+  
+  /* Submit button styling */
+  .edit-profile-container form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-profile-container form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* User list styling */
+  .edit-profile-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .edit-profile-container ul li {
+    padding: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: #343a40;
+  }
+  
+  /* Make form responsive */
+  @media (max-width: 600px) {
+    .edit-profile-container {
+      padding: 10px;
+    }
+  
+    .edit-profile-container form input {
+      width: calc(100% - 10px);
+    }
+  }
+  

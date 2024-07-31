@@ -29,4 +29,7 @@ export class MenuService {
   getRestaurantsByMenu(itemName: string): Observable<Restaurant[]> {
     return this.http.get<Restaurant[]>(`${NAV_URL}/api/menus/menu/by-menu/${itemName}`);
   }
+
+
 }
+

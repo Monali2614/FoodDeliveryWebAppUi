@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';  
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from  'src/app/models/user';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -11,17 +10,15 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserregisterComponent {
 
-  user = new User();
-  msg='';
+   user = new User();
+  msg = '';
   termsAndConditionsChecked: boolean = false;
-  isuseremailVal=false;
+  isuseremailVal = false;
   userRegistrationAlertShown = false;
 
+  constructor(private _router: Router, private userservice: UserService) { }
 
-  constructor( private _router : Router, private formBuilder: FormBuilder,private userservice: UserService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   capitalizeFirstLetter() {
     if (this.user.username) {
@@ -32,7 +29,7 @@ export class UserregisterComponent {
   showAlert1(message: string): void {
     if (!this.isuseremailVal) {
       alert(message);
-      this.isuseremailVal=true;
+      this.isuseremailVal = true;
     }
   }
 
@@ -44,15 +41,12 @@ export class UserregisterComponent {
   }
 
   isuseremailValid() {
-    if (!this.user.name || !this.user.username || !this.user.gender || !this.user.password || !this.user.email || !this.user.address) {
-      // Display error message to the user
-     
-      return false; // Prevent further execution
-    }else{
+    if (!this.user.name || !this.user.username || !this.user.gender || !this.user.password || !this.user.email || !this.user.address || !this.user.mobile) {
+      return false;
+    } else {
       return true;
     }
   }
-
 
   isPasswordValid1(password: string): boolean {
     const minLength = 6;
@@ -93,44 +87,54 @@ export class UserregisterComponent {
     return true;
   }
 
-
-
   registerUser(): void {
     if (!this.termsAndConditionsChecked) {
-     this.showAlert("Please agree to the terms and conditions to register");
+      this.showAlert("Please agree to the terms and conditions to register");
       console.log('Please agree to the terms and conditions to register.');
-     
-    }
-    
-   else if (!this.isPasswordValid1(this.user.password)) {
-    this.showAlert("Please enter valid password");
+    } else if (!this.isPasswordValid1(this.user.password)) {
+      this.showAlert("Please enter valid password");
       console.log('Please enter valid password.');
-      
-    }else if (!this.isuseremailValid()) {
+    } else if (!this.isuseremailValid()) {
       this.showAlert1("Enter all details");
       console.log('Please enter all details.');
-      
-    }else{
-  
-    this.userservice.registerUser(this.user).subscribe(
-      data => {
-        console.log("Registration Success");
-        sessionStorage.setItem("username", this.user.username);
-        sessionStorage.setItem("gender", this.user.gender);
-        alert('User registered successfully!');
-        this._router.navigate(['/login']);
-      },
-      error => {
-        console.log("Registration Failed");
-        console.log(error.error);
-        this.msg = "User with " + this.user.email + " already exists.";
-      }
-    );
-    console.log(this.user);
-    console.log('User registered successfully!');
-  }
+    } else if (!this.isMobileValid(this.user.mobile)) {
+      this.showAlert1("Mobile number must be 10 digits");
+      console.log('Mobile number must be 10 digits.');
+    } else {
+      this.userservice.registerUser(this.user).subscribe(
+        data => {
+          console.log("Registration Success");
+          sessionStorage.setItem("username", this.user.username);
+          sessionStorage.setItem("gender", this.user.gender);
+          alert('User registered successfully!');
+          this._router.navigate(['/login']);
+        },
+        error => {
+          console.log("Registration Failed");
+          console.log(error.error);
+          this.msg = "User with " + this.user.email + " already exists.";
+        }
+      );
+      console.log(this.user);
+      console.log('User registered successfully!');
+    }
   }
 
+  isMobileValid(mobile: string): boolean {
+    const mobilePattern = /^[0-9]{10}$/;
+    return mobilePattern.test(mobile);
+  }
 
-  
+  validateNumber(event: KeyboardEvent) {
+    const input = String.fromCharCode(event.keyCode);
+    if (!/[0-9]/.test(input)) {
+      event.preventDefault();
+    }
+  }
+
+  enforceMaxLength() {
+    if (this.user.mobile && this.user.mobile.length > 10) {
+      this.user.mobile = this.user.mobile.slice(0, 10);
+    }
+  }
 }

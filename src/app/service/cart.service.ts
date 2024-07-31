@@ -1,17 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Menu } from '../models/menu';
+import { FoodItem } from '../models/food-item';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: Menu[] = [];
+  private items: FoodItem[] = [];
 
-  addToCart(menu: Menu) {
-    this.cart.push(menu);
+  getItems(): FoodItem[] {
+    return this.items;
   }
 
-  getCart() {
-    return this.cart;
+  addItem(item: FoodItem): void {
+    this.items.push(item);
+  }
+
+  updateQuantity(itemId: number, quantity: number): void {
+    const item = this.items.find(item => item.id === itemId);
+    if (item) {
+      item.quantity = quantity;
+    }
+  }
+
+   removeItem(itemId: number): void {
+    this.items = this.items.filter(item => item.id !== itemId);
   }
 }
+
+

@@ -24,9 +24,10 @@ export class UserService {
 
 
 login(username: string, password: string): Observable<any> {
-
   console.log("user service",username,password);
   return this.http.post<any>(`${NAV_URL}/api/users/user/login/${username}/${password}`, { username, password });
 }
+
+
 
 }

@@ -80,4 +80,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       error => console.error('Error fetching restaurants by menu', error)
     );
   }
+
+  // toggleWishlist(menu: Menu): void {
+  //   if (this.isInWishlist(menu)) {
+  //     this.wishlistService.removeFromWishlist(menu);
+  //   } else {
+  //     this.wishlistService.addToWishlist(menu);
+  //   }
+  // }
+
+
+  // isInWishlist(menu: Menu): boolean {
+  //   return this.wishlistService.getWishlist().includes(menu);
+  // }
 }
+

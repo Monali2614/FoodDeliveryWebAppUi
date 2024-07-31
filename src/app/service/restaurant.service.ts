@@ -21,7 +21,7 @@ export class RestaurantService {
 
   }
 
-
+  
    getAllRestaurants(): Observable<any[]> {
     return this.http.get<any[]>(`${NAV_URL}/api/restaurants/restaurant/findAll`);
   }

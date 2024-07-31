@@ -1,50 +1,39 @@
 import { Injectable } from '@angular/core';
+import { Menu } from 'src/app/models/menu';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
+  private wishlistKey = 'wishlist';
   private wishlist: any[] = [];
-  private cart: any[] = [];
-  private favorites: any[] = [];
 
-  constructor() {}
-
-  addToWishlist(item: any) {
-    if (!this.wishlist.includes(item)) {
-      this.wishlist.push(item);
-    }
+  constructor() {
+    this.loadWishlist();
   }
 
-  removeFromWishlist(item: any) {
-    const index = this.wishlist.indexOf(item);
-    if (index !== -1) {
-      this.wishlist.splice(index, 1);
-    }
-  }
-
-  addToCart(item: any) {
-    if (!this.cart.includes(item)) {
-      this.cart.push(item);
-      this.removeFromWishlist(item);
-    }
-  }
-
-  addToFavorites(item: any) {
-    if (!this.favorites.includes(item)) {
-      this.favorites.push(item);
-    }
-  }
-
-  getWishlist() {
+  getWishlist(): any[] {
     return this.wishlist;
   }
 
-  getCart() {
-    return this.cart;
+  addToWishlist(item: any): void {
+    this.wishlist.push(item);
+    this.saveWishlist();
   }
 
-  getFavorites() {
-    return this.favorites;
+  removeFromWishlist(item: any): void {
+    this.wishlist = this.wishlist.filter(w => w !== item);
+    this.saveWishlist();
+  }
+
+  private saveWishlist(): void {
+    localStorage.setItem(this.wishlistKey, JSON.stringify(this.wishlist));
+  }
+
+  private loadWishlist(): void {
+    const storedWishlist = localStorage.getItem(this.wishlistKey);
+    if (storedWishlist) {
+      this.wishlist = JSON.parse(storedWishlist);
+    }
   }
 }

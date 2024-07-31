@@ -3,6 +3,8 @@ export class Menu {
   itemName: string;
   description: string;
   price: number;
+  image?: string;
+ 
   restaurant: {
     id: number;
     name: string; 
@@ -13,12 +15,14 @@ export class Menu {
     itemName: string = '',
     description: string = '',
     price: number = 0,
+    image?: string,
     restaurant: { id: number; name: string } = { id: 0, name: '' }
   ) {
     this.id = id;
     this.itemName = itemName;
     this.description = description;
     this.price = price;
+    this.image= image;
     this.restaurant = restaurant;
   }
 }

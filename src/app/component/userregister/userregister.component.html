@@ -18,7 +18,7 @@
                         <input 
                             type="text" 
                             class="form-control" 
-                            placeholder="UserName *" 
+                            placeholder="Name *" 
                             name="name" 
                             [(ngModel)]="user.name" 
                             required 
@@ -29,7 +29,6 @@
                             [class.d-none]="name.valid || name.untouched">
                         </small>
                     </div>
-
 
                     <div class="form-group">
                         <input 
@@ -104,6 +103,36 @@
 
                     <div class="form-group">
                         <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Mobile Number *" 
+                            name="mobile" 
+                            [(ngModel)]="user.mobile" 
+                            required 
+                            maxlength="10"
+                            pattern="^[0-9]{10}$"
+                            #mobile="ngModel"
+                            (keypress)="validateNumber($event)"
+                            (input)="enforceMaxLength()"
+                            [class.is-invalid]="mobile.invalid && mobile.touched">
+                        <small 
+                            class="text-danger" 
+                            [class.d-none]="mobile.valid || mobile.untouched">
+                            <b>Required field</b>
+                        </small>
+                        <div *ngIf="mobile.errors && (mobile.invalid && mobile.touched)">
+                            <small class="text-danger" *ngIf="mobile.errors['required']">
+                                <b>Mobile number is required</b>
+                            </small>
+                            <small class="text-danger" *ngIf="mobile.errors['pattern']">
+                                <b>Mobile number must be exactly 10 digits</b>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input 
                             type="password" 
                             class="form-control" 
                             placeholder="Password *" 
@@ -157,7 +186,6 @@
     </div>
 </div>
 
-<!-- Ensure your Angular scripts are properly included below this point -->
 <script src="path/to/angular.js"></script> <!-- Example path; adjust to your Angular setup -->
 
 </body>

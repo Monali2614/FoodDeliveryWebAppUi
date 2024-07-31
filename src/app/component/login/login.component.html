@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Order My Food</title>
-    <link rel="stylesheet" href="login.component.css">
+
 </head>
-
 <body>
-    <div class="container">
+    <div class="overlay">
         <div class="login-box">
-            <div class="admin-login">
-                <p class="admin-login-link">
-                    <a routerLink="/admin">Admin Login</a>
-                </p>
-            </div>
-
             <h2>Login</h2>
             <form (ngSubmit)="onLogin()">
                 <div class="input-group">
-                    <input type="text" id="username" name="username" [(ngModel)]="username" required placeholder="Username">
-                   
+                    <input type="text" id="username" name="username" [(ngModel)]="username" required>
+                    <label for="username">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
-                   
+                    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+                    <label for="password">Password</label>
                     <span id="toggle-password" class="toggle-password" (click)="togglePassword()">
-                        <img [src]="passwordVisible ? 'assets/eyeclose.jpeg' : 'assets/eyeopen.jpeg'" alt="Toggle password visibility">
+                        <img src="assets/eyeopen.jpeg" alt="Show password">
                     </span>
                 </div>
                 <button type="submit">Login</button>
-                <p class="signup-link">Don't have an account? <a routerLink="/userregister">Sign up</a></p>
-                <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+                <p class="signup-link">Don't have an account? <a href="/userregister">Sign up</a></p>
+                <p class="signup-link"><a (click)="navigateToAdmin()">Admin Login</a></p>
+
+                <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
             </form>
         </div>
     </div>
 </body>
-
 </html>
