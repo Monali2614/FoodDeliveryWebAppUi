@@ -1,0 +1,27 @@
+
+
+   <div *ngIf="loading">
+    <p>Loading menu...</p>
+  </div>
+  
+  <div *ngIf="!loading">
+    <div class="wishlist-header" *ngIf="wishlist.length > 0">
+      <h2>Wishlist</h2>
+    </div>
+  
+    <div class="wishlist-container" *ngIf="wishlist.length > 0">
+      <div class="wishlist-item" *ngFor="let item of wishlist">
+        <div class="item-details">
+          <h3 class="item-name">{{ item.itemName }}</h3>
+          <p class="item-price">{{ item.price | currency:'INR' }}</p>
+        </div>
+        <button class="remove-btn" (click)="removeFromWishlist(item)">&#x2715;</button>
+      </div>
+      <button class="checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+  
+    <div *ngIf="wishlist.length === 0">
+      <p>No items in wishlist</p>
+    </div>
+  </div>
+  

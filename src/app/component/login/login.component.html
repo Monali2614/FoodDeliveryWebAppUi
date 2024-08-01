@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Order My Food</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MDB Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: url('./assets/loginbackground.jpeg') no-repeat center center fixed; /* Add your background image path here */
+            background-size: cover;
+            background-color: #b1bfcd;
+        }
+        .rounded-t-5 {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        @media (min-width: 992px) {
+            .rounded-tr-lg-0 {
+                border-top-right-radius: 0;
+            }
+            .rounded-bl-lg-5 {
+                border-bottom-left-radius: 0.5rem;
+            }
+        }
+        .overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .login-box {
+            width: 100%;
+            max-width: 700px;
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .input-group label {
+            position: absolute;
+            top: -20px; /* Adjusted to stay above */
+            left: 10px;
+            background-color: #fff; /* To prevent overlap with input */
+            padding: 0 5px; /* Add some padding for a cleaner look */
+            color: #aaa;
+            transition: 0.3s;
+            font-size: 14px; /* Smaller font size for a cleaner look */
+        }
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: -30px; /* Adjusted to stay above */
+            left: 10px;
+            font-size: 12px;
+            color: #007bff;
+        }
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<section class="text-center text-lg-start overlay">
+    <div class="card mb-3 login-box">
+        <div class="row g-0 d-flex align-items-center">
+            <div class="col-lg-4 d-none d-lg-flex">
+                <img src="./assets/loginimg.jpeg" alt="images" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+            </div>
+            <div class="col-lg-8">
+                <div class="card-body py-5 px-md-5">
+                    <h2 class="text-center mb-4">Login</h2>
+                    <form (ngSubmit)="onLogin()">
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4 input-group">
+                            <input type="text" id="username" name="username" [(ngModel)]="username" class="form-control" required>
+                            <label class="form-label" for="username">Username</label>
+                        </div>
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4 input-group">
+                            <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control" required>
+                            <label class="form-label" for="password">Password</label>
+                            <span id="toggle-password" class="toggle-password" (click)="togglePassword()">
+                                <img src="assets/eyeopen.jpeg" alt="Show password">
+                            </span>
+                        </div>
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row mb-4">
+                            <div class="col d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- Simple link -->
+                                <a href="#!">Forgot password?</a>
+                            </div>
+                        </div>
+                        <!-- Submit button -->
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Login</button>
+                        <p class="signup-link">Don't have an account? <a href="/userregister">Sign up</a></p>
+                        <p class="signup-link"><a (click)="navigateToAdmin()">Admin Login</a></p>
+                        <!-- <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MDB Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+</body>
+</html>

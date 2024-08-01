@@ -1,0 +1,73 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Restaurant } from '../models/restaurant';
+import { Menu } from '../models/menu';
+import { environment } from 'src/environments/environment';
+
+const NAV_URL = environment.apiURL;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RestaurantService {
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  constructor(private http: HttpClient) {}
+
+  // Add a new restaurant
+  addRestaurant(newRestaurant: Restaurant): Observable<Restaurant> {
+    return this.http.post<Restaurant>(`${NAV_URL}/api/restaurants/restaurant/save`, newRestaurant, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Get all restaurants
+  getAllRestaurants(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${NAV_URL}/api/restaurants/restaurant/findAll`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Search for restaurants based on a query
+  searchRestaurants(query: string): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(`${NAV_URL}/api/restaurants/restaurant/find/${query}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Get a restaurant by its ID
+  getRestaurantById(id: number): Observable<Restaurant> {
+    return this.http.get<Restaurant>(`${NAV_URL}/api/restaurants/restaurant/find/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Update an existing restaurant
+  updateRestaurant(restaurant: Restaurant): Observable<Restaurant> {
+    return this.http.put<Restaurant>(`${NAV_URL}/api/restaurants/restaurant/update/${restaurant.restaurantId}`, restaurant, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Add a new menu item to a restaurant
+  addMenuItem(restaurantId: number, menu: Menu): Observable<Menu> {
+    return this.http.post<Menu>(`${NAV_URL}/api/menus/menu/save/${restaurantId}`, menu)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Delete a menu item by its ID
+  deleteMenuItem(menuId: number): Observable<void> {
+    return this.http.delete<void>(`${NAV_URL}/api/menus/menu/delete/${menuId}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Centralized error handling
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Something went wrong; please try again later.';
+    if (error.error instanceof ErrorEvent) {
+      console.error('Client-side error:', error.error.message);
+      errorMessage = `Client-side error: ${error.error.message}`;
+    } else {
+      console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+      errorMessage = `Backend error: ${error.status}, message: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+}

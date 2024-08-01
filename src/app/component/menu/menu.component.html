@@ -1,0 +1,17 @@
+<div class="menu-container">
+  <h1>Menu</h1>
+  <div class="card-container">
+    <div *ngFor="let item of menuItems" class="card">
+      <img [src]="item.image ? item.image : './assets/dosa1.jpg'" alt="{{ item.itemName }}" class="card-image" />
+
+      <div class="card-content">
+        <h2>{{ item.itemName }}</h2>
+        <p>{{ item.description || 'No description available' }}</p>
+        <p>Price: {{ item.price |  currency:'INR'}}</p>
+      </div>
+      <button (click)="addToCart(item)" class="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+
